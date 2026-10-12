@@ -1,0 +1,1 @@
+Add certificate, registration, recognition or approved document images here. Supported: JPG, JPEG, PNG, WEBP, AVIF, GIF.

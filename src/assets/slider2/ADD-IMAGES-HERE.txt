@@ -1,0 +1,4 @@
+Add your slider 2 images to this folder.
+Supported formats: .jpg, .jpeg, .png, .webp, .avif, .gif
+Images are picked up automatically on the next build/deploy. No code edits needed.
+Keep filenames unique and use simple names, e.g. image-01.jpg, image-02.jpg.

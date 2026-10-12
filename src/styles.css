@@ -1,0 +1,179 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --font-sans: "Noto Sans", "Noto Sans Devanagari", system-ui, sans-serif;
+  --font-display: "Merriweather", "Noto Serif Devanagari", Georgia, serif;
+  --font-hindi: "Noto Sans Devanagari", sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-navy: var(--navy);
+  --color-navy-2: var(--navy-2);
+  --color-royal: var(--royal);
+  --color-crimson: var(--crimson);
+  --color-gold: var(--gold);
+  --color-on-dark: var(--on-dark);
+  --color-on-dark-muted: var(--on-dark-muted);
+  --color-whatsapp: var(--whatsapp);
+  --color-facebook: var(--facebook);
+  --color-youtube: var(--youtube);
+  --color-instagram: var(--instagram);
+}
+
+:root {
+  --radius: 0.75rem;
+  --navy: oklch(0.21 0.07 258);       /* #061B3A */
+  --navy-2: oklch(0.29 0.1 258);      /* #092B5C */
+  --royal: oklch(0.47 0.19 27);       /* #A90812 */
+  --crimson: oklch(0.38 0.16 27);     /* #85000A */
+  --gold: oklch(0.88 0.17 92);        /* #FFD21F */
+  --on-dark: oklch(1 0 0);
+  --on-dark-muted: oklch(0.85 0.02 258);
+  --whatsapp: oklch(0.72 0.17 150);
+  --facebook: oklch(0.55 0.18 260);
+  --youtube: oklch(0.58 0.23 28);
+  --instagram: oklch(0.6 0.22 0);
+
+  --background: oklch(0.975 0.006 260);  /* #F5F7FB */
+  --foreground: oklch(0.27 0.03 260);    /* #202938 */
+  --card: oklch(1 0 0);
+  --card-foreground: var(--foreground);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--foreground);
+  --primary: var(--royal);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: var(--navy-2);
+  --secondary-foreground: oklch(1 0 0);
+  --muted: oklch(0.94 0.01 260);
+  --muted-foreground: oklch(0.48 0.03 260);
+  --accent: var(--gold);
+  --accent-foreground: var(--navy);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.9 0.012 260);
+  --input: oklch(0.88 0.015 260);
+  --ring: var(--gold);
+
+  --gradient-navy: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 70%, var(--crimson) 140%);
+  --gradient-red: linear-gradient(135deg, var(--royal), var(--crimson));
+  --gradient-hero: linear-gradient(100deg, color-mix(in oklab, var(--navy) 95%, transparent) 0%, color-mix(in oklab, var(--navy) 80%, transparent) 45%, color-mix(in oklab, var(--navy) 10%, transparent) 100%);
+  --shadow-card: 0 10px 30px -14px color-mix(in oklab, var(--navy) 35%, transparent);
+  --shadow-gold: 0 10px 30px -10px color-mix(in oklab, var(--gold) 60%, transparent);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--color-background); color: var(--color-foreground); font-family: var(--font-sans); overflow-x: hidden; }
+  h1, h2, h3 { font-family: var(--font-display); }
+  :focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+}
+
+@utility bg-gradient-navy { background-image: var(--gradient-navy); }
+@utility bg-gradient-red { background-image: var(--gradient-red); }
+@utility bg-gradient-hero { background-image: var(--gradient-hero); }
+@utility shadow-card { box-shadow: var(--shadow-card); }
+@utility shadow-gold { box-shadow: var(--shadow-gold); }
+@utility gold-rule {
+  height: 3px; width: 4rem; border-radius: 9999px;
+  background: linear-gradient(90deg, var(--gold), var(--royal));
+}
+@utility container-x { width: 100%; max-width: 80rem; margin-inline: auto; padding-inline: 1rem; @media (width >= 640px) { padding-inline: 1.5rem; } }
+@utility card-lift {
+  transition: transform .25s ease, box-shadow .25s ease;
+  &:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -18px color-mix(in oklab, var(--navy) 45%, transparent); }
+}
+@utility reveal {
+  opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease;
+  &.is-visible { opacity: 1; transform: none; }
+}
+
+
+/* Consistent polished motion across cards, images, social links and buttons. */
+@layer base {
+  a, button { -webkit-tap-highlight-color: transparent; }
+  button, a { transition-property: color, background-color, border-color, box-shadow, transform, opacity; transition-duration: 220ms; transition-timing-function: cubic-bezier(.2,.7,.2,1); }
+  img { max-width: 100%; }
+  article.card-lift { will-change: transform; }
+  article.card-lift:hover { border-color: color-mix(in oklab, var(--gold) 70%, var(--border)); }
+  article.card-lift img { transform-origin: center; }
+  .social-link, [aria-label*="WhatsApp"].rounded-full { box-shadow: 0 8px 22px -10px rgba(0,0,0,.45); }
+  .bg-whatsapp { background-color: #25D366 !important; }
+  .bg-whatsapp:hover { background-color: #128C7E !important; box-shadow: 0 10px 26px -8px rgba(37,211,102,.55); }
+  @media (hover: none) { article.card-lift:active { transform: scale(.99); } }
+}
+
+/* Extra polish for cards and touch devices across every route */
+@layer base {
+  .shadow-card { transition: box-shadow .28s ease, border-color .28s ease, transform .28s ease; }
+  article.shadow-card:hover, .card-lift:hover { box-shadow: 0 22px 44px -22px rgba(6,27,58,.55); }
+  .card-lift:focus-within { outline: 2px solid color-mix(in oklab, var(--gold) 80%, transparent); outline-offset: 3px; }
+  @media (max-width: 639px) {
+    .container-x { padding-inline: 1rem; }
+    section { scroll-margin-top: 5rem; }
+  }
+}
+
+
+/* Consistent hover states for all informational cards across all pages. */
+@layer base {
+  .container-x article, .container-x .bg-card.shadow-card, .container-x .rounded-xl.shadow-card, .container-x .rounded-2xl.shadow-card {
+    transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+  }
+  .container-x article:hover, .container-x .bg-card.shadow-card:hover, .container-x .rounded-xl.shadow-card:hover, .container-x .rounded-2xl.shadow-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 42px -22px rgba(6,27,58,.6);
+    border-color: color-mix(in oklab, var(--gold) 70%, var(--border));
+  }
+  .container-x article img { transition: transform .55s ease, filter .35s ease; }
+  .container-x article:hover img { filter: saturate(1.08); }
+  @media (prefers-reduced-motion: reduce) {
+    .container-x article, .container-x article img { transition: none !important; }
+    .container-x article:hover { transform: none; }
+  }
+}
+
+
+/* Compact, polished mobile quick-action dock */
+@layer base {
+  @media (max-width: 1023px) {
+    .mobile-action-dock a, .mobile-action-dock button { min-width: 0; white-space: nowrap; }
+  }
+  @media (max-width: 360px) {
+    .mobile-action-dock { inset-inline: .5rem; bottom: .35rem; border-radius: .85rem; }
+    .mobile-action-dock a, .mobile-action-dock button { gap: .35rem; font-size: .7rem; padding-inline: .25rem; }
+    .mobile-action-dock svg { width: .9rem; height: .9rem; }
+  }
+}
+@layer base {
+  .mobile-action-dock { bottom: calc(.5rem + env(safe-area-inset-bottom, 0px)); }
+}
